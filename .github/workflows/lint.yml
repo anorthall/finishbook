@@ -1,0 +1,18 @@
+name: Python Linting
+
+on:
+  push:
+
+jobs:
+  ruff:
+    name: Ruff
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Run ruff check
+        run: ruff check --output-format=github ${{ github.workspace }}
+
+      - name: Run ruff format check
+        run: ruff format --check ${{ github.workspace }}
